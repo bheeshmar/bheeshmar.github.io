@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Blogging | Simple Thoughts]]></title>
   <link href="http://bheeshmar.github.io/blog/categories/blogging/atom.xml" rel="self"/>
   <link href="http://bheeshmar.github.io/"/>
-  <updated>2015-01-01T23:03:20-06:00</updated>
+  <updated>2015-01-01T23:18:39-06:00</updated>
   <id>http://bheeshmar.github.io/</id>
   <author>
     <name><![CDATA[Bheeshmar Redheendran]]></name>
@@ -18,11 +18,11 @@
     <link href="http://bheeshmar.github.io/blog/2015/01/01/setting-up-this-blog/"/>
     <updated>2015-01-01T22:24:21-06:00</updated>
     <id>http://bheeshmar.github.io/blog/2015/01/01/setting-up-this-blog</id>
-    <content type="html"><![CDATA[<p>For 2015, I&rsquo;ve decided to start publishing the information that I&rsquo;ve digested instead of just spreading it haphazardly via word-of-mouth or retweeting links in social media. To that end, I decided to setup a blog using Github Pages.</p>
+    <content type="html"><![CDATA[<p>For 2015, I&rsquo;ve decided to start publishing the information that I&rsquo;ve digested instead of just spreading it haphazardly via word-of-mouth or retweeting links in social media. To that end, I have decided to setup a blog using Github Pages.</p>
 
 <p>I run a stock Ubuntu 14.04 desktop system at home, so I opened up Chrome and contemplated my options for blogging engines. My preliminary research found Jekyll, Octopress, Middleman, and Nanoc. I opted to stay simple and go with Octopress as my first attempt, since that came well recommended.</p>
 
-<p>I needed to install Ruby on my system and just to try something different (I use RVM at work), I opted to use chruby and ruby-install:</p>
+<p>I needed to install Ruby on my system and just to try something different (I use RVM at work) I opted to use chruby and ruby-install:</p>
 
 <pre><code class="bash"># chruby
 wget -O chruby-0.3.9.tar.gz https://github.com/postmodern/chruby/archive/v0.3.9.tar.gz
@@ -48,23 +48,19 @@ echo "source /usr/local/share/chruby/auto.sh" &gt;&gt; ~/.bashrc
 echo "chruby 2.1.3" &gt;&gt; ~/.bashrc
 </code></pre>
 
-<p>Then I installed Octopress by cloning the repo and running the commands in its tutorial.</p>
+<p>I installed Octopress by cloning the repo and running the commands in its tutorial and configured it to deploy to GitHub Pages.</p>
 
 <pre><code class="bash">git clone git://github.com/imathis/octopress.git octopress
 cd octopress
 gem install bundler
 bundle install
 rake install
-</code></pre>
-
-<p>I configured Octopress to deploy to GitHub Pages:</p>
-
-<pre><code class="bash">rake setup_github_pages
+rake setup_github_pages
 rake generate
 rake preview
 </code></pre>
 
-<p>For what it&rsquo;s worth, I could not get the <code>rake preview</code> to work until I installed a Javascript runtime. I chose to install node.js using apt-get:</p>
+<p>For what it&rsquo;s worth, I could not get the <code>rake preview</code> to work until I installed a Javascript runtime. I chose to install Node.js using Ubuntu&rsquo;s package manager:</p>
 
 <pre><code class="bash">sudo apt-get install nodejs
 </code></pre>
@@ -74,6 +70,16 @@ rake preview
 <pre><code class="bash">rake new_post["Setting up this blog"]
 vim source/_posts/2015-01-01-setting-up-this-blog.markdown
 </code></pre>
+
+<p>Lastly, I committed my changes and published the post.</p>
+
+<pre><code class="bash">git add sass/ source/
+git commit -a
+git push --set-upstream origin source
+rake deploy
+</code></pre>
+
+<p>With this, my repo at <code>bheeshmar/bheeshmar.github.io</code> has the generated site in its <code>master</code> branch and the source files in its <code>source</code> branch. Next steps are to customize the styling and setup commenting.</p>
 ]]></content>
   </entry>
   

@@ -87,11 +87,11 @@
   </header>
 
 
-  <div class="entry-content"><p>For 2015, I&rsquo;ve decided to start publishing the information that I&rsquo;ve digested instead of just spreading it haphazardly via word-of-mouth or retweeting links in social media. To that end, I decided to setup a blog using Github Pages.</p>
+  <div class="entry-content"><p>For 2015, I&rsquo;ve decided to start publishing the information that I&rsquo;ve digested instead of just spreading it haphazardly via word-of-mouth or retweeting links in social media. To that end, I have decided to setup a blog using Github Pages.</p>
 
 <p>I run a stock Ubuntu 14.04 desktop system at home, so I opened up Chrome and contemplated my options for blogging engines. My preliminary research found Jekyll, Octopress, Middleman, and Nanoc. I opted to stay simple and go with Octopress as my first attempt, since that came well recommended.</p>
 
-<p>I needed to install Ruby on my system and just to try something different (I use RVM at work), I opted to use chruby and ruby-install:</p>
+<p>I needed to install Ruby on my system and just to try something different (I use RVM at work) I opted to use chruby and ruby-install:</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -140,33 +140,28 @@
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>Then I installed Octopress by cloning the repo and running the commands in its tutorial.</p>
+<p>I installed Octopress by cloning the repo and running the commands in its tutorial and configured it to deploy to GitHub Pages.</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
 <span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
 </pre></td><td class='code'><pre><code class='bash'><span class='line'>git clone git://github.com/imathis/octopress.git octopress
 </span><span class='line'><span class="nb">cd </span>octopress
 </span><span class='line'>gem install bundler
 </span><span class='line'>bundle install
 </span><span class='line'>rake install
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>I configured Octopress to deploy to GitHub Pages:</p>
-
-<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='bash'><span class='line'>rake setup_github_pages
+</span><span class='line'>rake setup_github_pages
 </span><span class='line'>rake generate
 </span><span class='line'>rake preview
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>For what it&rsquo;s worth, I could not get the <code>rake preview</code> to work until I installed a Javascript runtime. I chose to install node.js using apt-get:</p>
+<p>For what it&rsquo;s worth, I could not get the <code>rake preview</code> to work until I installed a Javascript runtime. I chose to install Node.js using Ubuntu&rsquo;s package manager:</p>
 
 <figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 </pre></td><td class='code'><pre><code class='bash'><span class='line'>sudo apt-get install nodejs
@@ -182,7 +177,20 @@
 </span></code></pre></td></tr></table></div></figure>
 
 
+<p>Lastly, I committed my changes and published the post.</p>
 
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>git add sass/ <span class="nb">source</span>/
+</span><span class='line'>git commit -a
+</span><span class='line'>git push --set-upstream origin <span class="nb">source</span>
+</span><span class='line'>rake deploy
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>With this, my repo at <code>bheeshmar/bheeshmar.github.io</code> has the generated site in its <code>master</code> branch and the source files in its <code>source</code> branch. Next steps are to customize the styling and setup commenting.</p>
 </div>
   
   
