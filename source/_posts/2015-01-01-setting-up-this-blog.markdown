@@ -6,11 +6,11 @@ comments: true
 categories: [coding, blogging]
 ---
 
-For 2015, I've decided to start publishing the information that I've digested instead of just spreading it haphazardly via word-of-mouth or retweeting links in social media. To that end, I decided to setup a blog using Github Pages.
+For 2015, I've decided to start publishing the information that I've digested instead of just spreading it haphazardly via word-of-mouth or retweeting links in social media. To that end, I have decided to setup a blog using Github Pages.
 
 I run a stock Ubuntu 14.04 desktop system at home, so I opened up Chrome and contemplated my options for blogging engines. My preliminary research found Jekyll, Octopress, Middleman, and Nanoc. I opted to stay simple and go with Octopress as my first attempt, since that came well recommended.
 
-I needed to install Ruby on my system and just to try something different (I use RVM at work), I opted to use chruby and ruby-install:
+I needed to install Ruby on my system and just to try something different (I use RVM at work) I opted to use chruby and ruby-install:
 
 ```bash
 # chruby
@@ -38,7 +38,7 @@ echo "chruby 2.1.3" >> ~/.bashrc
 
 ```
 
-Then I installed Octopress by cloning the repo and running the commands in its tutorial.
+I installed Octopress by cloning the repo and running the commands in its tutorial and configured it to deploy to GitHub Pages.
 
 ```bash
 git clone git://github.com/imathis/octopress.git octopress
@@ -46,17 +46,12 @@ cd octopress
 gem install bundler
 bundle install
 rake install
-```
-
-I configured Octopress to deploy to GitHub Pages:
-
-```bash
 rake setup_github_pages
 rake generate
 rake preview
 ```
 
-For what it's worth, I could not get the `rake preview` to work until I installed a Javascript runtime. I chose to install node.js using apt-get:
+For what it's worth, I could not get the `rake preview` to work until I installed a Javascript runtime. I chose to install Node.js using Ubuntu's package manager:
 
 ```bash
 sudo apt-get install nodejs
@@ -78,4 +73,4 @@ git push --set-upstream origin source
 rake deploy
 ```
 
-With this, my repo at bheeshmar/bheeshmar.github.io has the generated site in its `master` branch and the source files in its `source` branch.
+With this, my repo at `bheeshmar/bheeshmar.github.io` has the generated site in its `master` branch and the source files in its `source` branch. Next steps are to customize the styling and setup commenting.
