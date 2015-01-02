@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Coding | Simple Thoughts]]></title>
+  <link href="http://bheeshmar.github.io/blog/categories/coding/atom.xml" rel="self"/>
+  <link href="http://bheeshmar.github.io/"/>
+  <updated>2015-01-01T23:03:20-06:00</updated>
+  <id>http://bheeshmar.github.io/</id>
+  <author>
+    <name><![CDATA[Bheeshmar Redheendran]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Setting Up This Blog]]></title>
+    <link href="http://bheeshmar.github.io/blog/2015/01/01/setting-up-this-blog/"/>
+    <updated>2015-01-01T22:24:21-06:00</updated>
+    <id>http://bheeshmar.github.io/blog/2015/01/01/setting-up-this-blog</id>
+    <content type="html"><![CDATA[<p>For 2015, I&rsquo;ve decided to start publishing the information that I&rsquo;ve digested instead of just spreading it haphazardly via word-of-mouth or retweeting links in social media. To that end, I decided to setup a blog using Github Pages.</p>
+
+<p>I run a stock Ubuntu 14.04 desktop system at home, so I opened up Chrome and contemplated my options for blogging engines. My preliminary research found Jekyll, Octopress, Middleman, and Nanoc. I opted to stay simple and go with Octopress as my first attempt, since that came well recommended.</p>
+
+<p>I needed to install Ruby on my system and just to try something different (I use RVM at work), I opted to use chruby and ruby-install:</p>
+
+<pre><code class="bash"># chruby
+wget -O chruby-0.3.9.tar.gz https://github.com/postmodern/chruby/archive/v0.3.9.tar.gz
+tar -xzvf chruby-0.3.9.tar.gz
+cd chruby-0.3.9/
+sudo make install
+
+# ruby-install
+wget -O ruby-install-0.5.0.tar.gz https://github.com/postmodern/ruby-install/archive/v0.5.0.tar.gz
+tar -xzvf ruby-install-0.5.0.tar.gz
+cd ruby-install-0.5.0/
+sudo make install
+
+# install latest ruby (2.1.3)
+ruby-install ruby
+
+# use it
+chruby 2.1.3
+
+# setup bash to autoload it
+echo "source /usr/local/share/chruby/chruby.sh" &gt;&gt; ~/.bashrc
+echo "source /usr/local/share/chruby/auto.sh" &gt;&gt; ~/.bashrc
+echo "chruby 2.1.3" &gt;&gt; ~/.bashrc
+</code></pre>
+
+<p>Then I installed Octopress by cloning the repo and running the commands in its tutorial.</p>
+
+<pre><code class="bash">git clone git://github.com/imathis/octopress.git octopress
+cd octopress
+gem install bundler
+bundle install
+rake install
+</code></pre>
+
+<p>I configured Octopress to deploy to GitHub Pages:</p>
+
+<pre><code class="bash">rake setup_github_pages
+rake generate
+rake preview
+</code></pre>
+
+<p>For what it&rsquo;s worth, I could not get the <code>rake preview</code> to work until I installed a Javascript runtime. I chose to install node.js using apt-get:</p>
+
+<pre><code class="bash">sudo apt-get install nodejs
+</code></pre>
+
+<p>I made some minor tweaks to the generated <code>_config.yml</code> file to customize it for my name and title, then I generated this blog post:</p>
+
+<pre><code class="bash">rake new_post["Setting up this blog"]
+vim source/_posts/2015-01-01-setting-up-this-blog.markdown
+</code></pre>
+]]></content>
+  </entry>
+  
+</feed>
