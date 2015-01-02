@@ -72,8 +72,10 @@ vim source/_posts/2015-01-01-setting-up-this-blog.markdown
 Lastly, I committed my changes and published the post.
 
 ```bash
+git add sass/ source/
 git commit -a
-git push
+git push --set-upstream origin source
 rake deploy
 ```
 
+With this, my repo at bheeshmar/bheeshmar.github.io has the generated site in its `master` branch and the source files in its `source` branch.
