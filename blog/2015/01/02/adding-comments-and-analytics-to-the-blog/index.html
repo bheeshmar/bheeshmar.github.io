@@ -5,13 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Blog Archive - Simple Thoughts</title>
+  <title>Adding Comments and Analytics to the Blog - Simple Thoughts</title>
   <meta name="author" content="Bheeshmar Redheendran">
 
   
-  <meta name="description" content="Blog Archive 2015 Adding Comments and Analytics to the Blog
-Jan 02 2015 posted in blogging, coding Setting Up This Blog
-Jan 01 2015 posted in &hellip;">
+  <meta name="description" content="Adding Disqus and Google Analytics to Octopress is pretty trivial. I found entries in the _config.yml file for google_analytics_tracking_id and &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -20,7 +18,7 @@ Jan 01 2015 posted in &hellip;">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://bheeshmar.github.io/blog/archives">
+  <link rel="canonical" href="http://bheeshmar.github.io/blog/2015/01/02/adding-comments-and-analytics-to-the-blog">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="Simple Thoughts" type="application/atom+xml">
@@ -78,50 +76,81 @@ Jan 01 2015 posted in &hellip;">
   <div id="main">
     <div id="content">
       <div>
-<article role="article">
+<article class="hentry" role="article">
   
   <header>
-    <h1 class="entry-title">Blog Archive</h1>
+    
+      <h1 class="entry-title">Adding Comments and Analytics to the Blog</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-01-02T20:37:26-06:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>2</span><span class='date-suffix'>nd</span>, <span class='date-year'>2015</span></span> <span class='time'>8:37 pm</span></time>
+        
+      </p>
     
   </header>
-  
-  <div id="blog-archives">
 
 
+<div class="entry-content"><p>Adding Disqus and Google Analytics to Octopress is pretty trivial. I found entries in the <code>_config.yml</code> file for <code>google_analytics_tracking_id</code> and <code>disqus_short_name</code> that needed values. I signed into Disqus and clicked &ldquo;Add Disqus to your site&rdquo; and filled out the fields. I then put the corresponding short name into the Octopress config file.</p>
 
-  
-  <h2>2015</h2>
+<p>Google Analytics was similarly easy: Go to <a href="https://www.google.com/analytics">https://www.google.com/analytics</a> and fill out the forms to generate a tracking code, then paste that code into the Octopress config file.</p>
 
-<article>
-  
-<h1><a href="/blog/2015/01/02/adding-comments-and-analytics-to-the-blog/">Adding Comments and Analytics to the Blog</a></h1>
-<time datetime="2015-01-02T20:37:26-06:00" pubdate><span class='month'>Jan</span> <span class='day'>02</span> <span class='year'>2015</span></time>
-
-<footer>
-  <span class="categories">posted in <a class='category' href='/blog/categories/blogging/'>blogging</a>, <a class='category' href='/blog/categories/coding/'>coding</a></span>
-</footer>
-
-
-</article>
-
-
-
-<article>
-  
-<h1><a href="/blog/2015/01/01/setting-up-this-blog/">Setting Up This Blog</a></h1>
-<time datetime="2015-01-01T22:24:21-06:00" pubdate><span class='month'>Jan</span> <span class='day'>01</span> <span class='year'>2015</span></time>
-
-<footer>
-  <span class="categories">posted in <a class='category' href='/blog/categories/blogging/'>blogging</a>, <a class='category' href='/blog/categories/coding/'>coding</a></span>
-</footer>
-
-
-</article>
-
+<p>Redeploy the site and you are good to go! Easy peasy!</p>
 </div>
 
+
+  <footer>
+    <p class="meta">
+      
   
+
+<span class="byline author vcard">Posted by <span class="fn">Bheeshmar Redheendran</span></span>
+
+      
+
+
+
+
+<time class='entry-date' datetime='2015-01-02T20:37:26-06:00'><span class='date'><span class='date-month'>Jan</span> <span class='date-day'>2</span><span class='date-suffix'>nd</span>, <span class='date-year'>2015</span></span> <span class='time'>8:37 pm</span></time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/blogging/'>blogging</a>, <a class='category' href='/blog/categories/coding/'>coding</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://bheeshmar.github.io/blog/2015/01/02/adding-comments-and-analytics-to-the-blog/" data-via="bheeshmar" data-counturl="http://bheeshmar.github.io/blog/2015/01/02/adding-comments-and-analytics-to-the-blog/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2015/01/01/setting-up-this-blog/" title="Previous Post: Setting up this blog">&laquo; Setting up this blog</a>
+      
+      
+    </p>
+  </footer>
 </article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
 
 </div>
 
@@ -202,7 +231,10 @@ Jan 01 2015 posted in &hellip;">
       var disqus_shortname = 'bheeshmar-blog';
       
         
-        var disqus_script = 'count.js';
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://bheeshmar.github.io/blog/2015/01/02/adding-comments-and-analytics-to-the-blog/';
+        var disqus_url = 'http://bheeshmar.github.io/blog/2015/01/02/adding-comments-and-analytics-to-the-blog/';
+        var disqus_script = 'embed.js';
       
     (function () {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;

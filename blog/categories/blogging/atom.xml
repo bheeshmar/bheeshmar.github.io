@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Blogging | Simple Thoughts]]></title>
   <link href="http://bheeshmar.github.io/blog/categories/blogging/atom.xml" rel="self"/>
   <link href="http://bheeshmar.github.io/"/>
-  <updated>2015-01-02T19:56:56-06:00</updated>
+  <updated>2015-01-02T20:48:59-06:00</updated>
   <id>http://bheeshmar.github.io/</id>
   <author>
     <name><![CDATA[Bheeshmar Redheendran]]></name>
@@ -14,13 +14,29 @@
 
   
   <entry>
+    <title type="html"><![CDATA[Adding Comments and Analytics to the Blog]]></title>
+    <link href="http://bheeshmar.github.io/blog/2015/01/02/adding-comments-and-analytics-to-the-blog/"/>
+    <updated>2015-01-02T20:37:26-06:00</updated>
+    <id>http://bheeshmar.github.io/blog/2015/01/02/adding-comments-and-analytics-to-the-blog</id>
+    <content type="html"><![CDATA[<p>Adding Disqus and Google Analytics to Octopress is pretty trivial. I found entries in the <code>_config.yml</code> file for <code>google_analytics_tracking_id</code> and <code>disqus_short_name</code> that needed values. I signed into Disqus and clicked &ldquo;Add Disqus to your site&rdquo; and filled out the fields. I then put the corresponding short name into the Octopress config file.</p>
+
+<p>Google Analytics was similarly easy: Go to <a href="https://www.google.com/analytics">https://www.google.com/analytics</a> and fill out the forms to generate a tracking code, then paste that code into the Octopress config file.</p>
+
+<p>Redeploy the site and you are good to go! Easy peasy!</p>
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[Setting Up This Blog]]></title>
     <link href="http://bheeshmar.github.io/blog/2015/01/01/setting-up-this-blog/"/>
     <updated>2015-01-01T22:24:21-06:00</updated>
     <id>http://bheeshmar.github.io/blog/2015/01/01/setting-up-this-blog</id>
     <content type="html"><![CDATA[<p>For 2015, I&rsquo;ve decided to start publishing the information that I&rsquo;ve digested instead of just spreading it haphazardly via word-of-mouth or retweeting links in social media. To that end, I have decided to setup a blog using Github Pages.</p>
 
-<p>I run a stock Ubuntu 14.04 desktop system at home, so I opened up Chrome and contemplated my options for blogging engines. My preliminary research found Jekyll, Octopress, Middleman, and Nanoc. I opted to stay simple and go with Octopress as my first attempt, since that came well recommended.</p>
+<p>I run a stock Ubuntu 14.04 desktop system at home, so I opened up Chrome and contemplated my options for blogging engines. My preliminary research found Jekyll, Octopress, Middleman, and Nanoc. I opted to stay simple and go with Octopress as my first attempt, since that came well recommended. Here&rsquo;s how I set everything up.</p>
+
+<!-- more -->
+
 
 <p>I needed to install Ruby on my system and just to try something different (I use RVM at work) I opted to use chruby and ruby-install:</p>
 
