@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: Blogging | Simple Thoughts]]></title>
+  <title><![CDATA[Category: blogging | Simple Thoughts]]></title>
   <link href="http://bheeshmar.github.io/blog/categories/blogging/atom.xml" rel="self"/>
   <link href="http://bheeshmar.github.io/"/>
-  <updated>2015-01-02T20:48:59-06:00</updated>
+  <updated>2015-01-04T19:34:39-06:00</updated>
   <id>http://bheeshmar.github.io/</id>
   <author>
     <name><![CDATA[Bheeshmar Redheendran]]></name>
@@ -14,7 +14,24 @@
 
   
   <entry>
-    <title type="html"><![CDATA[Adding Comments and Analytics to the Blog]]></title>
+    <title type="html"><![CDATA[Installing an Octopress theme]]></title>
+    <link href="http://bheeshmar.github.io/blog/2015/01/04/installing-an-octopress-theme/"/>
+    <updated>2015-01-04T19:28:47-06:00</updated>
+    <id>http://bheeshmar.github.io/blog/2015/01/04/installing-an-octopress-theme</id>
+    <content type="html"><![CDATA[<p>Installing a theme in Octopress is trivial. After browsing the <a href="https://github.com/imathis/octopress/wiki/3rd-Party-Octopress-Themes">theme catalog</a>, I chose the &ldquo;slash&rdquo; theme because I prefer its sans-serif fonts and clean layout. Here&rsquo;s how I installed it:</p>
+
+<pre><code>$ cd git/blog # where my octopress repo is
+$ git clone git://github.com/tommy351/Octopress-Theme-Slash.git .themes/slash
+$ rake install['slash']
+$ rake generate
+</code></pre>
+
+<p>Commit your changes if you are happy and you are done!</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Adding comments and analytics to the blog]]></title>
     <link href="http://bheeshmar.github.io/blog/2015/01/02/adding-comments-and-analytics-to-the-blog/"/>
     <updated>2015-01-02T20:37:26-06:00</updated>
     <id>http://bheeshmar.github.io/blog/2015/01/02/adding-comments-and-analytics-to-the-blog</id>
@@ -27,7 +44,7 @@
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Setting Up This Blog]]></title>
+    <title type="html"><![CDATA[Setting up this blog]]></title>
     <link href="http://bheeshmar.github.io/blog/2015/01/01/setting-up-this-blog/"/>
     <updated>2015-01-01T22:24:21-06:00</updated>
     <id>http://bheeshmar.github.io/blog/2015/01/01/setting-up-this-blog</id>

@@ -3,11 +3,11 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>Adding comments and analytics to the blog - Simple Thoughts</title>
+	<title>Installing an Octopress theme - Simple Thoughts</title>
 	<meta name="author" content="Bheeshmar Redheendran">
 
 	
-	<meta name="description" content="Adding Disqus and Google Analytics to Octopress is pretty trivial. I found entries in the _config.yml file for google_analytics_tracking_id and &hellip;">
+	<meta name="description" content="Installing a theme in Octopress is trivial. After browsing the theme catalog, I chose the &ldquo;slash&rdquo; theme because I prefer its sans-serif &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -80,12 +80,20 @@
 		
 	
 	<div id="content" class="inner"><article class="post">
-	<h2 class="title">Adding Comments and Analytics to the Blog</h2>
-	<div class="entry-content"><p>Adding Disqus and Google Analytics to Octopress is pretty trivial. I found entries in the <code>_config.yml</code> file for <code>google_analytics_tracking_id</code> and <code>disqus_short_name</code> that needed values. I signed into Disqus and clicked &ldquo;Add Disqus to your site&rdquo; and filled out the fields. I then put the corresponding short name into the Octopress config file.</p>
+	<h2 class="title">Installing an Octopress Theme</h2>
+	<div class="entry-content"><p>Installing a theme in Octopress is trivial. After browsing the <a href="https://github.com/imathis/octopress/wiki/3rd-Party-Octopress-Themes">theme catalog</a>, I chose the &ldquo;slash&rdquo; theme because I prefer its sans-serif fonts and clean layout. Here&rsquo;s how I installed it:</p>
 
-<p>Google Analytics was similarly easy: Go to <a href="https://www.google.com/analytics">https://www.google.com/analytics</a> and fill out the forms to generate a tracking code, then paste that code into the Octopress config file.</p>
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$ cd git/blog # where my octopress repo is
+</span><span class='line'>$ git clone git://github.com/tommy351/Octopress-Theme-Slash.git .themes/slash
+</span><span class='line'>$ rake install['slash']
+</span><span class='line'>$ rake generate</span></code></pre></td></tr></table></div></figure>
 
-<p>Redeploy the site and you are good to go! Easy peasy!</p>
+
+<p>Commit your changes if you are happy and you are done!</p>
 </div>
 
 
@@ -102,11 +110,11 @@
   
 
 
-<time datetime="2015-01-02T20:37:26-06:00" pubdate data-updated="true"></time></div>
+<time datetime="2015-01-04T19:28:47-06:00" pubdate data-updated="true"></time></div>
 	<div class="tags">
 
 
-	<a class='category' href='/blog/categories/blogging/'>blogging</a>, <a class='category' href='/blog/categories/coding/'>coding</a>
+	<a class='category' href='/blog/categories/blogging/'>blogging</a>, <a class='category' href='/blog/categories/coding/'>coding,</a>
 
 
 </div>
@@ -153,8 +161,8 @@
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://bheeshmar.github.io/blog/2015/01/02/adding-comments-and-analytics-to-the-blog/';
-        var disqus_url = 'http://bheeshmar.github.io/blog/2015/01/02/adding-comments-and-analytics-to-the-blog/';
+        var disqus_identifier = 'http://bheeshmar.github.io/blog/2015/01/04/installing-an-octopress-theme/';
+        var disqus_url = 'http://bheeshmar.github.io/blog/2015/01/04/installing-an-octopress-theme/';
         var disqus_script = 'embed.js';
       
     (function () {

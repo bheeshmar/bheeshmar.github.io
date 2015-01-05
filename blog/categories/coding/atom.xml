@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: Coding | Simple Thoughts]]></title>
+  <title><![CDATA[Category: coding, | Simple Thoughts]]></title>
   <link href="http://bheeshmar.github.io/blog/categories/coding/atom.xml" rel="self"/>
   <link href="http://bheeshmar.github.io/"/>
-  <updated>2015-01-02T20:48:59-06:00</updated>
+  <updated>2015-01-04T19:34:39-06:00</updated>
   <id>http://bheeshmar.github.io/</id>
   <author>
     <name><![CDATA[Bheeshmar Redheendran]]></name>
@@ -14,88 +14,19 @@
 
   
   <entry>
-    <title type="html"><![CDATA[Adding Comments and Analytics to the Blog]]></title>
-    <link href="http://bheeshmar.github.io/blog/2015/01/02/adding-comments-and-analytics-to-the-blog/"/>
-    <updated>2015-01-02T20:37:26-06:00</updated>
-    <id>http://bheeshmar.github.io/blog/2015/01/02/adding-comments-and-analytics-to-the-blog</id>
-    <content type="html"><![CDATA[<p>Adding Disqus and Google Analytics to Octopress is pretty trivial. I found entries in the <code>_config.yml</code> file for <code>google_analytics_tracking_id</code> and <code>disqus_short_name</code> that needed values. I signed into Disqus and clicked &ldquo;Add Disqus to your site&rdquo; and filled out the fields. I then put the corresponding short name into the Octopress config file.</p>
+    <title type="html"><![CDATA[Installing an Octopress theme]]></title>
+    <link href="http://bheeshmar.github.io/blog/2015/01/04/installing-an-octopress-theme/"/>
+    <updated>2015-01-04T19:28:47-06:00</updated>
+    <id>http://bheeshmar.github.io/blog/2015/01/04/installing-an-octopress-theme</id>
+    <content type="html"><![CDATA[<p>Installing a theme in Octopress is trivial. After browsing the <a href="https://github.com/imathis/octopress/wiki/3rd-Party-Octopress-Themes">theme catalog</a>, I chose the &ldquo;slash&rdquo; theme because I prefer its sans-serif fonts and clean layout. Here&rsquo;s how I installed it:</p>
 
-<p>Google Analytics was similarly easy: Go to <a href="https://www.google.com/analytics">https://www.google.com/analytics</a> and fill out the forms to generate a tracking code, then paste that code into the Octopress config file.</p>
-
-<p>Redeploy the site and you are good to go! Easy peasy!</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Setting Up This Blog]]></title>
-    <link href="http://bheeshmar.github.io/blog/2015/01/01/setting-up-this-blog/"/>
-    <updated>2015-01-01T22:24:21-06:00</updated>
-    <id>http://bheeshmar.github.io/blog/2015/01/01/setting-up-this-blog</id>
-    <content type="html"><![CDATA[<p>For 2015, I&rsquo;ve decided to start publishing the information that I&rsquo;ve digested instead of just spreading it haphazardly via word-of-mouth or retweeting links in social media. To that end, I have decided to setup a blog using Github Pages.</p>
-
-<p>I run a stock Ubuntu 14.04 desktop system at home, so I opened up Chrome and contemplated my options for blogging engines. My preliminary research found Jekyll, Octopress, Middleman, and Nanoc. I opted to stay simple and go with Octopress as my first attempt, since that came well recommended. Here&rsquo;s how I set everything up.</p>
-
-<!-- more -->
-
-
-<p>I needed to install Ruby on my system and just to try something different (I use RVM at work) I opted to use chruby and ruby-install:</p>
-
-<pre><code class="bash"># chruby
-wget -O chruby-0.3.9.tar.gz https://github.com/postmodern/chruby/archive/v0.3.9.tar.gz
-tar -xzvf chruby-0.3.9.tar.gz
-cd chruby-0.3.9/
-sudo make install
-
-# ruby-install
-wget -O ruby-install-0.5.0.tar.gz https://github.com/postmodern/ruby-install/archive/v0.5.0.tar.gz
-tar -xzvf ruby-install-0.5.0.tar.gz
-cd ruby-install-0.5.0/
-sudo make install
-
-# install latest ruby (2.1.3)
-ruby-install ruby
-
-# use it
-chruby 2.1.3
-
-# setup bash to autoload it
-echo "source /usr/local/share/chruby/chruby.sh" &gt;&gt; ~/.bashrc
-echo "source /usr/local/share/chruby/auto.sh" &gt;&gt; ~/.bashrc
-echo "chruby 2.1.3" &gt;&gt; ~/.bashrc
+<pre><code>$ cd git/blog # where my octopress repo is
+$ git clone git://github.com/tommy351/Octopress-Theme-Slash.git .themes/slash
+$ rake install['slash']
+$ rake generate
 </code></pre>
 
-<p>I installed Octopress by cloning the repo and running the commands in its tutorial and configured it to deploy to GitHub Pages.</p>
-
-<pre><code class="bash">git clone git://github.com/imathis/octopress.git octopress
-cd octopress
-gem install bundler
-bundle install
-rake install
-rake setup_github_pages
-rake generate
-rake preview
-</code></pre>
-
-<p>For what it&rsquo;s worth, I could not get the <code>rake preview</code> to work until I installed a Javascript runtime. I chose to install Node.js using Ubuntu&rsquo;s package manager:</p>
-
-<pre><code class="bash">sudo apt-get install nodejs
-</code></pre>
-
-<p>I made some minor tweaks to the generated <code>_config.yml</code> file to customize it for my name and title, then I generated this blog post:</p>
-
-<pre><code class="bash">rake new_post["Setting up this blog"]
-vim source/_posts/2015-01-01-setting-up-this-blog.markdown
-</code></pre>
-
-<p>Lastly, I committed my changes and published the post.</p>
-
-<pre><code class="bash">git add sass/ source/
-git commit -a
-git push --set-upstream origin source
-rake deploy
-</code></pre>
-
-<p>With this, my repo at <code>bheeshmar/bheeshmar.github.io</code> has the generated site in its <code>master</code> branch and the source files in its <code>source</code> branch. Next steps are to customize the styling and setup commenting.</p>
+<p>Commit your changes if you are happy and you are done!</p>
 ]]></content>
   </entry>
   
