@@ -5,7 +5,7 @@ date: 2015-01-04 19:28:47 -0600
 comments: true
 categories: coding, blogging
 ---
-Installing a theme in Octopress is trivial. I chose the "slash" theme because I prefer its sans-serif fonts and clean layout. Here's how I installed it:
+Installing a theme in Octopress is trivial. After browsing the [theme catalog](https://github.com/imathis/octopress/wiki/3rd-Party-Octopress-Themes), I chose the "slash" theme because I prefer its sans-serif fonts and clean layout. Here's how I installed it:
 
 ```
 $ cd git/blog # where my octopress repo is
