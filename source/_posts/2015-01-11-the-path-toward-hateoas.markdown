@@ -8,7 +8,11 @@ categories: coding
 We were discussing API design at work. Specifically, we were debating the
 merits of adding a boolean attribute to a JSON object. Now, if you know me, you
 know how much I hate booleans (more on that another time), so I argued against
-it. The design consideration in question was to add a way to conditionally hide
+it.
+
+<!-- more -->
+
+The design consideration in question was to add a way to conditionally hide
 the "like" button in the UI from the author of a post. The request was to add
 an attribute to let the client know whether the current user was the author of
 the post:
