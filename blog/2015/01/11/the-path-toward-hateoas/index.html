@@ -3,7 +3,7 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>Simple Thoughts</title>
+	<title>The path toward HATEOAS - Simple Thoughts</title>
 	<meta name="author" content="Bheeshmar Redheendran">
 
 	
@@ -80,18 +80,9 @@ merits of adding a boolean attribute to a JSON object. Now, if you know me &hell
 	
 		
 	
-	<div id="content" class="inner">
-
-
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/blog/2015/01/11/the-path-toward-hateoas/">
-		
-			The Path Toward HATEOAS</a>
-	</h2>
-	<div class="entry-content">
-		<p>We were discussing API design at work. Specifically, we were debating the
+	<div id="content" class="inner"><article class="post">
+	<h2 class="title">The Path Toward HATEOAS</h2>
+	<div class="entry-content"><p>We were discussing API design at work. Specifically, we were debating the
 merits of adding a boolean attribute to a JSON object. Now, if you know me, you
 know how much I hate booleans (more on that another time), so I argued against
 it. The design consideration in question was to add a way to conditionally hide
@@ -208,10 +199,7 @@ API:</p>
 URLs in the client. The presence or absence of the ability to like is used to
 key the one conditional which adds the button. I&rsquo;m sure there are some
 drawbacks here, but so far this looks very promising!</p>
-
-		
-		
-	</div>
+</div>
 
 
 <div class="meta">
@@ -239,153 +227,25 @@ drawbacks here, but so far this looks very promising!</p>
 </div>
 </article>
 
-
-    <article class="post">
-	<h2 class="title">
+	<div class="share">
+	<div class="addthis_toolbox addthis_default_style ">
 		
-		<a href="/blog/2015/01/04/installing-an-octopress-theme/">
 		
-			Installing an Octopress Theme</a>
-	</h2>
-	<div class="entry-content">
-		<p>Installing a theme in Octopress is trivial. After browsing the <a href="https://github.com/imathis/octopress/wiki/3rd-Party-Octopress-Themes">theme catalog</a>, I chose the &ldquo;slash&rdquo; theme because I prefer its sans-serif fonts and clean layout. Here&rsquo;s how I installed it:</p>
-
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$ cd git/blog # where my octopress repo is
-</span><span class='line'>$ git clone git://github.com/tommy351/Octopress-Theme-Slash.git .themes/slash
-</span><span class='line'>$ rake install['slash']
-</span><span class='line'>$ rake generate</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Commit your changes if you are happy and you are done!</p>
-
+		<a class="addthis_button_tweet"></a>
+		
 		
 		
 	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2015-01-04T19:28:47-06:00" pubdate data-updated="true"></time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/blogging/'>blogging</a>, <a class='category' href='/blog/categories/coding/'>coding,</a>
-
-
-</div>
 	
 </div>
-</article>
-
-
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/blog/2015/01/02/adding-comments-and-analytics-to-the-blog/">
-		
-			Adding Comments and Analytics to the Blog</a>
-	</h2>
-	<div class="entry-content">
-		<p>Adding Disqus and Google Analytics to Octopress is pretty trivial. I found entries in the <code>_config.yml</code> file for <code>google_analytics_tracking_id</code> and <code>disqus_short_name</code> that needed values. I signed into Disqus and clicked &ldquo;Add Disqus to your site&rdquo; and filled out the fields. I then put the corresponding short name into the Octopress config file.</p>
-
-<p>Google Analytics was similarly easy: Go to <a href="https://www.google.com/analytics">https://www.google.com/analytics</a> and fill out the forms to generate a tracking code, then paste that code into the Octopress config file.</p>
-
-<p>Redeploy the site and you are good to go! Easy peasy!</p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
 
 
 
-
-
-
-
-
-  
-
-
-<time datetime="2015-01-02T20:37:26-06:00" pubdate data-updated="true"></time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/blogging/'>blogging</a>, <a class='category' href='/blog/categories/coding/'>coding</a>
-
-
+<section id="comment">
+    <h2 class="title">Comments</h2>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 </div>
-	
-</div>
-</article>
-
-
-    <article class="post">
-	<h2 class="title">
-		
-		<a href="/blog/2015/01/01/setting-up-this-blog/">
-		
-			Setting Up This Blog</a>
-	</h2>
-	<div class="entry-content">
-		<p>For 2015, I&rsquo;ve decided to start publishing the information that I&rsquo;ve digested instead of just spreading it haphazardly via word-of-mouth or retweeting links in social media. To that end, I have decided to setup a blog using Github Pages.</p>
-
-<p>I run a stock Ubuntu 14.04 desktop system at home, so I opened up Chrome and contemplated my options for blogging engines. My preliminary research found Jekyll, Octopress, Middleman, and Nanoc. I opted to stay simple and go with Octopress as my first attempt, since that came well recommended. Here&rsquo;s how I set everything up.</p>
-
-
-		
-		<a href="/blog/2015/01/01/setting-up-this-blog/" class="more-link">Read on &rarr;</a>
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2015-01-01T22:24:21-06:00" pubdate data-updated="true"></time></div>
-	<div class="tags">
-
-
-	<a class='category' href='/blog/categories/blogging/'>blogging</a>, <a class='category' href='/blog/categories/coding/'>coding</a>
-
-
-</div>
-	
-</div>
-</article>
-
-<nav id="pagenavi">
-    
-    
-    <div class="center"><a href="/blog/archives">Blog Archives</a></div>
-</nav>
+</section>
 </div>
 	<footer id="footer" class="inner">Copyright &copy; 2015
 
@@ -405,7 +265,10 @@ drawbacks here, but so far this looks very promising!</p>
       var disqus_shortname = 'bheeshmar-blog';
       
         
-        var disqus_script = 'count.js';
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://bheeshmar.github.io/blog/2015/01/11/the-path-toward-hateoas/';
+        var disqus_url = 'http://bheeshmar.github.io/blog/2015/01/11/the-path-toward-hateoas/';
+        var disqus_script = 'embed.js';
       
     (function () {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;

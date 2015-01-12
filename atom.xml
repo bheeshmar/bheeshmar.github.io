@@ -4,7 +4,7 @@
   <title><![CDATA[Simple Thoughts]]></title>
   <link href="http://bheeshmar.github.io/atom.xml" rel="self"/>
   <link href="http://bheeshmar.github.io/"/>
-  <updated>2015-01-04T19:34:39-06:00</updated>
+  <updated>2015-01-11T20:16:02-06:00</updated>
   <id>http://bheeshmar.github.io/</id>
   <author>
     <name><![CDATA[Bheeshmar Redheendran]]></name>
@@ -12,6 +12,131 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[The path toward HATEOAS]]></title>
+    <link href="http://bheeshmar.github.io/blog/2015/01/11/the-path-toward-hateoas/"/>
+    <updated>2015-01-11T19:15:47-06:00</updated>
+    <id>http://bheeshmar.github.io/blog/2015/01/11/the-path-toward-hateoas</id>
+    <content type="html"><![CDATA[<p>We were discussing API design at work. Specifically, we were debating the
+merits of adding a boolean attribute to a JSON object. Now, if you know me, you
+know how much I hate booleans (more on that another time), so I argued against
+it. The design consideration in question was to add a way to conditionally hide
+the &ldquo;like&rdquo; button in the UI from the author of a post. The request was to add
+an attribute to let the client know whether the current user was the author of
+the post:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="p">{</span> <span class="nx">id</span><span class="o">:</span> <span class="mi">12</span><span class="p">,</span> <span class="nx">title</span><span class="o">:</span> <span class="s2">&quot;Awesome post&quot;</span><span class="p">,</span> <span class="p">...,</span> <span class="nx">author</span><span class="o">:</span> <span class="kc">true</span> <span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Then the client would check that attribute in Javascript and take the
+appropriate action:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">addLikeButton</span><span class="p">(</span><span class="s1">&#39;/post/&#39;</span> <span class="o">+</span> <span class="nx">model</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;id&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;/like&#39;</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1">// Authors can&#39;t like their own posts</span>
+</span><span class='line'><span class="k">if</span> <span class="p">(</span><span class="nx">model</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;author&#39;</span><span class="p">))</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;like-button&#39;</span><span class="p">).</span><span class="nx">hide</span><span class="p">();</span>
+</span><span class='line'><span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;like-button&#39;</span><span class="p">).</span><span class="nx">show</span><span class="p">();</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>One problem I have with this is that it delegates business rules to the client.
+The server already knows whether or not to allow a &ldquo;like&rdquo; to be applied or not,
+the client is trying to convey that nicely to the user. Another problem I have
+is that it is using an indirect test: we want the user to not be able to like
+something, and the fact that that applies to an author is just a business rule
+for today. So, why not make the attribute more explicit:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="p">{</span> <span class="nx">id</span><span class="o">:</span> <span class="mi">12</span><span class="p">,</span> <span class="nx">title</span><span class="o">:</span> <span class="s2">&quot;Awesome post&quot;</span><span class="p">,</span> <span class="p">...,</span> <span class="nx">likeable</span><span class="o">:</span> <span class="kc">false</span> <span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Now the client would use more or less the same code as before, but with better clarity:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="nx">addLikeButton</span><span class="p">(</span><span class="s1">&#39;/post/&#39;</span> <span class="o">+</span> <span class="nx">model</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;id&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;/like&#39;</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">if</span> <span class="p">(</span><span class="nx">model</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;likeable&#39;</span><span class="p">))</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;like-button&#39;</span><span class="p">).</span><span class="nx">show</span><span class="p">();</span>
+</span><span class='line'><span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;like-button&#39;</span><span class="p">).</span><span class="nx">hide</span><span class="p">();</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Better, but again, I don&rsquo;t like that boolean! I would much rather have some
+sort of enumerated type, as this general problem is one of exposing
+capabilities:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="p">{</span> <span class="nx">id</span><span class="o">:</span> <span class="mi">12</span><span class="p">,</span> <span class="nx">title</span><span class="o">:</span> <span class="s2">&quot;Awesome post&quot;</span><span class="p">,</span> <span class="p">...,</span> <span class="nx">capabilities</span><span class="o">:</span> <span class="p">[</span><span class="s2">&quot;likeable&quot;</span><span class="p">,</span> <span class="s2">&quot;commentable&quot;</span><span class="p">,</span> <span class="p">...]</span> <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="nx">addLikeButton</span><span class="p">(</span><span class="s1">&#39;/post/&#39;</span> <span class="o">+</span> <span class="nx">model</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;id&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;/like&#39;</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">if</span> <span class="p">(</span><span class="nx">_</span><span class="p">.</span><span class="nx">contains</span><span class="p">(</span><span class="nx">model</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;capabilities&#39;</span><span class="p">),</span> <span class="s1">&#39;likeable&#39;</span><span class="p">))</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;like-button&#39;</span><span class="p">).</span><span class="nx">show</span><span class="p">();</span>
+</span><span class='line'><span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;like-button&#39;</span><span class="p">).</span><span class="nx">hide</span><span class="p">();</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Of course, this has its own drawbacks: the fact that things are
+<a href="http://c2.com/cgi/wiki?StringlyTyped">&ldquo;stringly-typed&rdquo;</a> is not great, and you
+still need to have a boolean test.</p>
+
+<p>After some discussion, I thought about how it would be nice if the server sent
+down the mechanism for the action as the flag. Well, isn&rsquo;t that
+<a href="http://en.wikipedia.org/wiki/HATEOAS">HATEOAS</a>? Why not return this from the
+API:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="p">{</span> <span class="nx">id</span><span class="o">:</span> <span class="mi">12</span><span class="p">,</span> <span class="nx">title</span><span class="o">:</span> <span class="s2">&quot;Awesome post&quot;</span><span class="p">,</span> <span class="p">...,</span> <span class="nx">like</span><span class="o">:</span> <span class="p">{</span> <span class="nx">rel</span><span class="o">:</span> <span class="s2">&quot;like&quot;</span><span class="p">,</span> <span class="nx">href</span><span class="o">:</span> <span class="s2">&quot;/post/12/like&quot;</span> <span class="p">}</span> <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">if</span> <span class="p">(</span><span class="nx">model</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;like&#39;</span><span class="p">))</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">addLikeButton</span><span class="p">(</span><span class="nx">model</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;like&#39;</span><span class="p">)[</span><span class="s1">&#39;href&#39;</span><span class="p">]);</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>I like that the server returns the URL now and that we don&rsquo;t have hard-coded
+URLs in the client. The presence or absence of the ability to like is used to
+key the one conditional which adds the button. I&rsquo;m sure there are some
+drawbacks here, but so far this looks very promising!</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Installing an Octopress theme]]></title>
